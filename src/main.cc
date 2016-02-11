@@ -30,18 +30,18 @@ int main(void)
     cap.set(cv::CAP_PROP_FPS, 15);
     cv::Mat frame = getFrame();
 
-    cv::Mat src;
+    /*cv::Mat src;
     cap >> src;
     bool isColor = (src.type() == CV_8UC3);
     cv::VideoWriter writer;
-    int codec = cv::VideoWriter::fourcc('M', 'P', '4', 'V');
-    std::string filename = "video.mp4";
+    int codec = cv::VideoWriter::fourcc('M', 'J', 'P', 'G');
+    std::string filename = "video.avi";
     cv::Size sizeFrame(640, 480);
-    writer.open(filename, codec, 15, sizeFrame, isColor);
+    writer.open(filename, codec, 15, sizeFrame, isColor);*/
 
     for (;;) {
         getNextFrame(cap, frame);
-        writer.write(frame);
+        //writer.write(frame);
 
         pos relative_pos = getRelativeTargetPos(frame);
         //printf("Relative Pos (x: %f, y:%f)\n", relative_pos.x, relative_pos.y);
@@ -53,7 +53,7 @@ int main(void)
 
     }
     cap.release();
-    writer.release();
+    //writer.release();
 
     return 0;
 }

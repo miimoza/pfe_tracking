@@ -29,7 +29,7 @@ static void displayMat(cv::Mat &img)
 {
     cv::Mat flipped;
     cv::flip(img, flipped, -1);
-    //cv::imshow("PFE TRACKING", flipped);
+    cv::imshow("PFE TRACKING", flipped);
 }
 
 static void drawPos(cv::Mat &img, struct pos p)
