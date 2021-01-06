@@ -251,6 +251,8 @@ int main()
     printf(OK);
     */
 
+    int ii = 0, ii1 = 0, ii2 = 0;
+
     printf("\tChecking ability to move...");
     fflush(stdout);
     for (ii = -89; ii < 90; ii++) {
@@ -264,7 +266,6 @@ int main()
             goto error;
         }
     }
-    * /
 
-        return 0;
+    return 0;
 }
