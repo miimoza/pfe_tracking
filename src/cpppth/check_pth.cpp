@@ -236,11 +236,12 @@ int main()
 {
     //pantilthat *pth = new pantilthat();
     pantilthat *pth = get_pth();
-    check_pth(pth);
+    //check_pth(pth);
     //pantilthat *pth = get_pth();
 
-    //init_pth(pth);
+    init_pth(pth);
 
+    /*
     printf("\tSetting servos to 30 and 45 degrees...");
     pth->set_servo(1, 0);
     printf(OK);
@@ -248,8 +249,7 @@ int main()
     lsleep(300);
     pth->set_servo(2, 0);
     printf(OK);
-
-    /*
+    */
 
     printf("\tChecking ability to move...");
     fflush(stdout);
@@ -264,7 +264,7 @@ int main()
             goto error;
         }
     }
-    */
+    * /
 
-    return 0;
+        return 0;
 }
