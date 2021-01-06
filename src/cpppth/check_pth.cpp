@@ -250,7 +250,7 @@ int check_pth(pantilthat *pth)
     return err;
 }
 
-int move_servo(int i, intpantilthat *pth)
+int check_pth2(pantilthat *pth)
 {
     unsigned char i1 = 0, i2 = 0;
     int ii = 0, ii1 = 0, ii2 = 0;
