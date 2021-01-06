@@ -272,19 +272,7 @@ int check_pth2(pantilthat *pth)
         if (!pth->i2c_write_byte(REG_CONFIG, /*00001100*/ 0x0C))
             goto error;
         lsleep(FIFTYMILLIS);
-        // Check that Servo 1 and Servo 2 motors are disabled, that lights are
-        // enabled and that Light Mode is WS2812 (Config register == 00001100 ==
-        // 0x0c)
-        printf("\tChecking servos and light initial status...");
-        fflush(stdout);
-        if (!pth->i2c_read_byte(REG_CONFIG, &i)) {
-            printf(NOK);
-            goto error;
-        } else if (i != /*00001100*/ 0x0c) {
-            printf(NOK);
-            goto error;
-        }
-        printf(OK);
+
         // This configuration is known to be fool-proof
         printf("\tSetting known good config...");
         fflush(stdout);
