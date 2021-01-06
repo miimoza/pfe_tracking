@@ -131,7 +131,7 @@ int main()
 {
     pantilthat *pth = init_pth();
 
-    printf("\tSetting servo %d to 0 degrees...");
+    printf("\tSetting servos to 0 degrees...");
     pth->set_servo(1, 0);
     printf(OK);
     pth->set_servo(2, 0);
