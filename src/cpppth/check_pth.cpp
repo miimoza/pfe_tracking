@@ -263,7 +263,6 @@ int main()
         ii2 = pth->get_servo(2);
         if ((ii1 != ii) || (ii2 != ii)) {
             printf(NOK);
-            goto error;
         }
     }
 
