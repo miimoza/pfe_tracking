@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 # project
-set(TARGET_NAME pfe_tracking)
+set(TARGET_NAME track)
 project(${TARGET_NAME})
 
 # compilations
