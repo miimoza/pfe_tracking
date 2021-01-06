@@ -128,7 +128,7 @@ pantilthat *get_pth()
     return pth;
 }
 
-int main()
+int main2()
 {
     //pantilthat *pth = get_pth();
     pantilthat *pth = new pantilthat();
@@ -161,7 +161,7 @@ int main()
     return 0;
 }
 
-int main2()
+int main()
 {
     unsigned char i = 0, i1 = 0, i2 = 0;
     int ii = 0, ii1 = 0, ii2 = 0;
