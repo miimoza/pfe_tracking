@@ -9,5 +9,9 @@ int main(void)
 
     cv::Mat image = cv::imread("./images/test3.png");
     getRelativeTargetPos(image);
+    image = cv::imread("./images/test2.png");
+    getRelativeTargetPos(image);
+    image = cv::imread("./images/test.png");
+    getRelativeTargetPos(image);
     return 0;
 }
