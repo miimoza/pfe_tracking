@@ -241,10 +241,12 @@ int main()
 
     init_pth(pth);
 
-    printf("\tSetting servos to 0 degrees...");
-    pth->set_servo(1, 0);
+    printf("\tSetting servos to 30 and 45 degrees...");
+    pth->set_servo(1, 30);
     printf(OK);
-    pth->set_servo(2, 0);
+    std::cout << "chill man 300 ms c cool.." << std::endl;
+    lsleep(300);
+    pth->set_servo(2, 45);
     printf(OK);
 
     /*
