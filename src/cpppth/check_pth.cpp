@@ -67,8 +67,7 @@ int lsleep(long ms)
 
 int init_pth(pantilthat *pth)
 {
-    unsigned char i = 0, i1 = 0, i2 = 0;
-    int ii = 0, ii1 = 0, ii2 = 0;
+    unsigned char i = 0;
     int err = -1;
 
     try {
@@ -111,32 +110,6 @@ int init_pth(pantilthat *pth)
             printf(NOK);
             goto error;
         }
-        printf(OK);
-        // Set pan then tilt position to zero
-        for (i = 1; i < 3; i++) {
-            printf("\tSetting servo %d to 0 degrees...", i);
-            fflush(stdout);
-            pth->set_servo(i, 0);
-            printf(OK);
-        }
-        // The PTH must be able to move (-89, +89) along both axis
-        printf("\tChecking ability to move...");
-        fflush(stdout);
-        for (ii = -89; ii < 90; ii++) {
-            pth->set_servo(1, ii);
-            pth->set_servo(2, ii);
-            lsleep(50);
-            ii1 = pth->get_servo(1);
-            ii2 = pth->get_servo(2);
-            if ((ii1 != ii) || (ii2 != ii)) {
-                printf(NOK);
-                goto error;
-            }
-        }
-        // Set PTH head back to its zero position
-        pth->set_servo(1, 0);
-        pth->set_servo(2, 0);
-        lsleep(ONESECOND);
         printf(OK);
 
         // Getting to this point asserts no error occurred
@@ -293,10 +266,18 @@ int main()
     pth->set_servo(2, 0);
     printf(OK);
 */
-
+    unsigned char i = 0, i1 = 0, i2 = 0;
     int ii = 0, ii1 = 0, ii2 = 0;
 
-    printf("\tChecking ability to move...");
+    // Set pan then tilt position to zero
+    for (i = 1; i < 3; i++) {
+        printf("\tSetting servo %d to 0 degrees...", i);
+        fflush(stdout);
+        pth->set_servo(i, 0);
+        printf(OK);
+    }
+
+    printf("\tChecking ability to SUCER DES GROSSES QUEUES...");
     fflush(stdout);
     for (ii = -89; ii < 90; ii++) {
         pth->set_servo(1, ii);
@@ -308,6 +289,12 @@ int main()
             printf(NOK);
         }
     }
+
+    // Set PTH head back to its zero position
+    pth->set_servo(1, 0);
+    pth->set_servo(2, 0);
+    lsleep(ONESECOND);
+    printf(OK);
 
     return 0;
 }
