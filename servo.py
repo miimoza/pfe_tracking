@@ -1,19 +1,13 @@
-from time import sleep
-import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
+#!/usr/bin/python
 
-def setServoAngle(servo, angle):
-	pwm = GPIO.PWM(servo, 50)
-	pwm.start(8)
-	dutyCycle = angle / 18. + 3.
-	pwm.ChangeDutyCycle(dutyCycle)
-	sleep(0.3)
-	pwm.stop()
+import pantilthat
+import sys
+import time
 
-if __name__ == '__main__':
-	import sys
-	servo = int(sys.argv[1])
-	GPIO.setup(servo, GPIO.OUT)
-	setServoAngle(servo, int(sys.argv[2]))
-	GPIO.cleanup()
+pan_angle = int(sys.argv[1])
+tilt_angle = int(sys.argv[2])
+
+if __name__ == "__main__":
+    pantilthat.tilt(tilt_angle)
+    pantilthat.pan(pan_angle)
+    time.sleep(0.5)
