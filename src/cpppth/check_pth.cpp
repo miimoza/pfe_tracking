@@ -268,10 +268,6 @@ int check_pth2(pantilthat *pth)
                 << endl;
             goto error;
         }
-        // Reset the PTH device
-        if (!pth->i2c_write_byte(REG_CONFIG, /*00001100*/ 0x0C))
-            goto error;
-        lsleep(FIFTYMILLIS);
 
         // This configuration is known to be fool-proof
         printf("\tSetting known good config...");
