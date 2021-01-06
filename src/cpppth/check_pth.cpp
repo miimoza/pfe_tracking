@@ -128,40 +128,7 @@ pantilthat *get_pth()
     return pth;
 }
 
-int main2()
-{
-    //pantilthat *pth = get_pth();
-    pantilthat *pth = new pantilthat();
-
-    init_pth(pth);
-
-    printf("\tSetting servos to 0 degrees...");
-    pth->set_servo(1, 0);
-    printf(OK);
-    pth->set_servo(2, 0);
-    printf(OK);
-
-    /*
-
-    printf("\tChecking ability to move...");
-    fflush(stdout);
-    for (ii = -89; ii < 90; ii++) {
-        pth->set_servo(1, ii);
-        pth->set_servo(2, ii);
-        lsleep(50);
-        ii1 = pth->get_servo(1);
-        ii2 = pth->get_servo(2);
-        if ((ii1 != ii) || (ii2 != ii)) {
-            printf(NOK);
-            goto error;
-        }
-    }
-    */
-
-    return 0;
-}
-
-int main()
+int check_pth(pantilthat *pth)
 {
     unsigned char i = 0, i1 = 0, i2 = 0;
     int ii = 0, ii1 = 0, ii2 = 0;
@@ -169,7 +136,7 @@ int main()
 
     try {
         // May rise an exception if the system is unable to create an instance
-        pantilthat *pth = new pantilthat();
+        //pantilthat *pth = new pantilthat();
 
         printf("\n[INFO] checking the Pan-Tilt HAT module...\n\n");
 
@@ -263,4 +230,38 @@ int main()
     }
 
     return err;
+}
+
+int main()
+{
+    pantilthat *pth = new pantilthat();
+    check_pth();
+    //pantilthat *pth = get_pth();
+
+    init_pth(pth);
+
+    printf("\tSetting servos to 0 degrees...");
+    pth->set_servo(1, 0);
+    printf(OK);
+    pth->set_servo(2, 0);
+    printf(OK);
+
+    /*
+
+    printf("\tChecking ability to move...");
+    fflush(stdout);
+    for (ii = -89; ii < 90; ii++) {
+        pth->set_servo(1, ii);
+        pth->set_servo(2, ii);
+        lsleep(50);
+        ii1 = pth->get_servo(1);
+        ii2 = pth->get_servo(2);
+        if ((ii1 != ii) || (ii2 != ii)) {
+            printf(NOK);
+            goto error;
+        }
+    }
+    */
+
+    return 0;
 }
