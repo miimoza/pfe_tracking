@@ -6,7 +6,7 @@ set(TARGET_NAME covid)
 project(${TARGET_NAME})
 
 # compilations
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -std=c++17")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_STANDARD 17)
 
