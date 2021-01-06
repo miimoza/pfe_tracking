@@ -130,7 +130,9 @@ pantilthat *get_pth()
 
 int main()
 {
-    pantilthat *pth = get_pth();
+    //pantilthat *pth = get_pth();
+    pantilthat *pth = new pantilthat();
+
     init_pth(pth);
 
     printf("\tSetting servos to 0 degrees...");
