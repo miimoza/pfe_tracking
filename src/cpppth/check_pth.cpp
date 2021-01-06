@@ -65,19 +65,6 @@ int lsleep(long ms)
     return result;
 }
 
-int main()
-{
-    pantilthat *pth = init_pth();
-
-    printf("\tSetting servo %d to 0 degrees...");
-    pth->set_servo(1, 0);
-    printf(OK);
-    pth->set_servo(2, 0);
-    printf(OK);
-
-    return 0;
-}
-
 pantilthat *init_pth()
 {
     unsigned char i = 0;
@@ -138,6 +125,19 @@ pantilthat *init_pth()
              << endl;
         exit(-1);
     }
+}
+
+int main()
+{
+    pantilthat *pth = init_pth();
+
+    printf("\tSetting servo %d to 0 degrees...");
+    pth->set_servo(1, 0);
+    printf(OK);
+    pth->set_servo(2, 0);
+    printf(OK);
+
+    return 0;
 }
 
 int main2()
