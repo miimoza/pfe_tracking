@@ -269,13 +269,6 @@ int check_pth2(pantilthat *pth)
             goto error;
         }
 
-        // Set pan then tilt position to zero
-        for (i = 1; i < 3; i++) {
-            printf("\tSetting servo %d to 0 degrees...", i);
-            fflush(stdout);
-            pth->set_servo(i, 0);
-            printf(OK);
-        }
         // The PTH must be able to move (-89, +89) along both axis
         printf("\tChecking ability to move...");
         fflush(stdout);
