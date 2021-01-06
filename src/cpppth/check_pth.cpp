@@ -69,7 +69,7 @@ int main()
 {
     pantilthat *pth = init_pth();
 
-    printf("\tSetting servo %d to 0 degrees...", i);
+    printf("\tSetting servo %d to 0 degrees...");
     pth->set_servo(1, 0);
     printf(OK);
     pth->set_servo(2, 0);
@@ -80,9 +80,7 @@ int main()
 
 pantilthat *init_pth()
 {
-    unsigned char i = 0, i1 = 0, i2 = 0;
-    int ii = 0, ii1 = 0, ii2 = 0;
-    int err = -1;
+    unsigned char i = 0;
 
     try {
         // May rise an exception if the system is unable to create an instance
