@@ -65,7 +65,7 @@ int lsleep(long ms)
     return result;
 }
 
-init init_pth(pantilthat *pth)
+int init_pth(pantilthat *pth)
 {
     unsigned char i = 0, i1 = 0, i2 = 0;
     int ii = 0, ii1 = 0, ii2 = 0;
