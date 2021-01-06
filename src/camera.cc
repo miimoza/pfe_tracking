@@ -4,11 +4,11 @@
 
 cv::VideoCapture getVideoCapture()
 {
-    VideoCapture cap(0);
+    cv::VideoCapture cap(0);
     if (!cap.isOpened())
     {
         std::cout << "Cannot open picam" << std::endl;
-        return;
+        //return;
     }
 
     return cap;
@@ -21,7 +21,7 @@ cv::Mat getImg(cv::VideoCapture cap)
     if (!bSucess)
     {
         std::cout << "Cannot read a frame from picam" << std::endl;
-        return;
+        //return;
     }
 
     return img;
