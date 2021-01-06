@@ -261,18 +261,10 @@ int check_pth2(pantilthat *pth)
 
         printf("\n[INFO] checking the Pan-Tilt HAT module...\n\n");
 
-        // Initial configuration
-        if (!pth->setup()) {
-            cerr
-                << "[FATAL] Could not initialize Pan-Tilt HAT module. Aborting.\n"
-                << endl;
-            goto error;
-        }
-
         // The PTH must be able to move (-89, +89) along both axis
         printf("\tChecking ability to move...");
         fflush(stdout);
-        for (ii = -89; ii < 90; ii++) {
+        for (ii = -80; ii < 80; ii++) {
             pth->set_servo(1, ii);
             pth->set_servo(2, ii);
             lsleep(50);
