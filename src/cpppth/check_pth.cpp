@@ -235,7 +235,7 @@ int check_pth(pantilthat *pth)
 int main()
 {
     pantilthat *pth = new pantilthat();
-    check_pth();
+    check_pth(pth);
     //pantilthat *pth = get_pth();
 
     init_pth(pth);
