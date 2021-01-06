@@ -80,6 +80,10 @@ int main()
 
 pantilthat *init_pth()
 {
+    unsigned char i = 0, i1 = 0, i2 = 0;
+    int ii = 0, ii1 = 0, ii2 = 0;
+    int err = -1;
+
     try {
         // May rise an exception if the system is unable to create an instance
         pantilthat *pth = new pantilthat();
