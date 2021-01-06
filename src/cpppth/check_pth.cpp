@@ -114,8 +114,10 @@ error:
 
 pantilthat *get_pth()
 {
+    pantilthat *pth;
+
     try {
-        return new pantilthat();
+        pth = new pantilthat();
     } catch (exception &e) {
         cerr << "[FATAL] could not create Pan-Tilt HAT instance class : "
              << e.what() << "Aborting.\n"
@@ -123,7 +125,7 @@ pantilthat *get_pth()
         exit(-1);
     }
 
-    //return pth;
+    return pth;
 }
 
 int main()
