@@ -65,77 +65,93 @@ int lsleep(long ms)
     return result;
 }
 
-pantilthat *init_pth()
+int init_pth(pantilthat *pth)
 {
     unsigned char i = 0;
 
+    // May rise an exception if the system is unable to create an instance
+    printf("\n[INFO] checking the Pan-Tilt HAT module...\n\n");
+
+    // Initial configuration
+    if (!pth->setup()) {
+        cerr << "[FATAL] Could not initialize Pan-Tilt HAT module. Aborting.\n"
+             << endl;
+        goto error;
+    }
+    // Reset the PTH device
+    if (!pth->i2c_write_byte(REG_CONFIG, /*00001100*/ 0x0C))
+        goto error;
+    lsleep(FIFTYMILLIS);
+    // Check that Servo 1 and Servo 2 motors are disabled, that lights are
+    // enabled and that Light Mode is WS2812 (Config register == 00001100 ==
+    // 0x0c)
+    printf("\tChecking servos and light initial status...");
+    fflush(stdout);
+    if (!pth->i2c_read_byte(REG_CONFIG, &i)) {
+        printf(NOK);
+        goto error;
+    } else if (i != /*00001100*/ 0x0c) {
+        printf(NOK);
+        goto error;
+    }
+    printf(OK);
+    // This configuration is known to be fool-proof
+    printf("\tSetting known good config...");
+    fflush(stdout);
+    if ((!pth->servo_enable(1, 1)) || (!pth->servo_enable(2, 1)) ||
+        (!pth->servo_pulse_min(1, 575)) || (!pth->servo_pulse_max(1, 2300)) ||
+        (!pth->servo_pulse_min(2, 575)) || (!pth->servo_pulse_max(2, 2300))) {
+        printf(NOK);
+        goto error;
+    }
+    printf(OK);
+
+error:
+    // Get rid of PTH object and frees memory.
+    if (pth)
+        delete pth;
+}
+
+pantilthat *get_pth()
+{
     try {
-        // May rise an exception if the system is unable to create an instance
         pantilthat *pth = new pantilthat();
-
-        printf("\n[INFO] checking the Pan-Tilt HAT module...\n\n");
-
-        // Initial configuration
-        if (!pth->setup()) {
-            cerr
-                << "[FATAL] Could not initialize Pan-Tilt HAT module. Aborting.\n"
-                << endl;
-            goto error;
-        }
-        // Reset the PTH device
-        if (!pth->i2c_write_byte(REG_CONFIG, /*00001100*/ 0x0C))
-            goto error;
-        lsleep(FIFTYMILLIS);
-        // Check that Servo 1 and Servo 2 motors are disabled, that lights are
-        // enabled and that Light Mode is WS2812 (Config register == 00001100 ==
-        // 0x0c)
-        printf("\tChecking servos and light initial status...");
-        fflush(stdout);
-        if (!pth->i2c_read_byte(REG_CONFIG, &i)) {
-            printf(NOK);
-            goto error;
-        } else if (i != /*00001100*/ 0x0c) {
-            printf(NOK);
-            goto error;
-        }
-        printf(OK);
-        // This configuration is known to be fool-proof
-        printf("\tSetting known good config...");
-        fflush(stdout);
-        if ((!pth->servo_enable(1, 1)) || (!pth->servo_enable(2, 1)) ||
-            (!pth->servo_pulse_min(1, 575)) ||
-            (!pth->servo_pulse_max(1, 2300)) ||
-            (!pth->servo_pulse_min(2, 575)) ||
-            (!pth->servo_pulse_max(2, 2300))) {
-            printf(NOK);
-            goto error;
-        }
-        printf(OK);
-
-        return pth;
-
-    error:
-        // Get rid of PTH object and frees memory.
-        if (pth)
-            delete pth;
-
     } catch (exception &e) {
         cerr << "[FATAL] could not create Pan-Tilt HAT instance class : "
              << e.what() << "Aborting.\n"
              << endl;
         exit(-1);
     }
+
+    return pth;
 }
 
 int main()
 {
-    pantilthat *pth = init_pth();
+    init_pth(pth);
 
     printf("\tSetting servos to 0 degrees...");
     pth->set_servo(1, 0);
     printf(OK);
     pth->set_servo(2, 0);
     printf(OK);
+
+    /*
+
+    printf("\tChecking ability to move...");
+    fflush(stdout);
+    for (ii = -89; ii < 90; ii++) {
+        pth->set_servo(1, ii);
+        pth->set_servo(2, ii);
+        lsleep(50);
+        ii1 = pth->get_servo(1);
+        ii2 = pth->get_servo(2);
+        if ((ii1 != ii) || (ii2 != ii)) {
+            printf(NOK);
+            goto error;
+        }
+    }
+    */
 
     return 0;
 }
