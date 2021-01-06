@@ -257,16 +257,7 @@ int main()
 
     init_pth(pth);
 
-    /*
-    printf("\tSetting servos to 30 and 45 degrees...");
-    pth->set_servo(1, 0);
-    printf(OK);
-    std::cout << "chill man 300 ms c cool.." << std::endl;
-    lsleep(300);
-    pth->set_servo(2, 0);
-    printf(OK);
-*/
-    unsigned char i = 0, i1 = 0, i2 = 0;
+    unsigned char i = 0;
     int ii = 0, ii1 = 0, ii2 = 0;
 
     // Set pan then tilt position to zero
