@@ -239,14 +239,14 @@ int main()
     check_pth(pth);
     //pantilthat *pth = get_pth();
 
-    init_pth(pth);
+    //init_pth(pth);
 
     printf("\tSetting servos to 30 and 45 degrees...");
-    pth->set_servo(1, 30);
+    pth->set_servo(1, 0);
     printf(OK);
     std::cout << "chill man 300 ms c cool.." << std::endl;
     lsleep(300);
-    pth->set_servo(2, 45);
+    pth->set_servo(2, 0);
     printf(OK);
 
     /*
