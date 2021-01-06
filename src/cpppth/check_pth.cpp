@@ -269,18 +269,6 @@ int check_pth2(pantilthat *pth)
             goto error;
         }
 
-        // This configuration is known to be fool-proof
-        printf("\tSetting known good config...");
-        fflush(stdout);
-        if ((!pth->servo_enable(1, 1)) || (!pth->servo_enable(2, 1)) ||
-            (!pth->servo_pulse_min(1, 575)) ||
-            (!pth->servo_pulse_max(1, 2300)) ||
-            (!pth->servo_pulse_min(2, 575)) ||
-            (!pth->servo_pulse_max(2, 2300))) {
-            printf(NOK);
-            goto error;
-        }
-        printf(OK);
         // Set pan then tilt position to zero
         for (i = 1; i < 3; i++) {
             printf("\tSetting servo %d to 0 degrees...", i);
