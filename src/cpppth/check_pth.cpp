@@ -264,8 +264,17 @@ int move_servo(int i, intpantilthat *pth)
         // The PTH must be able to move (-89, +89) along both axis
         printf("\tChecking ability to move...");
         fflush(stdout);
-        pth->set_servo(1, 45);
-        lsleep(ONESECOND);
+        for (ii = -80; ii < 80; ii++) {
+            pth->set_servo(1, ii);
+            pth->set_servo(2, ii);
+            lsleep(50);
+            ii1 = pth->get_servo(1);
+            ii2 = pth->get_servo(2);
+            if ((ii1 != ii) || (ii2 != ii)) {
+                printf(NOK);
+                goto error;
+            }
+        }
         // Set PTH head back to its zero position
         pth->set_servo(1, 0);
         pth->set_servo(2, 0);
