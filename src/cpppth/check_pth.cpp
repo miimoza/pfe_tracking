@@ -265,6 +265,7 @@ int move_servo(int i, intpantilthat *pth)
         printf("\tChecking ability to move...");
         fflush(stdout);
         pth->set_servo(1, 45);
+        lsleep(ONESECOND);
         // Set PTH head back to its zero position
         pth->set_servo(1, 0);
         pth->set_servo(2, 0);
