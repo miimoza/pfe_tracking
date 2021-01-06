@@ -115,7 +115,7 @@ error:
 pantilthat *get_pth()
 {
     try {
-        pantilthat *pth = new pantilthat();
+        return new pantilthat();
     } catch (exception &e) {
         cerr << "[FATAL] could not create Pan-Tilt HAT instance class : "
              << e.what() << "Aborting.\n"
@@ -123,11 +123,12 @@ pantilthat *get_pth()
         exit(-1);
     }
 
-    return pth;
+    //return pth;
 }
 
 int main()
 {
+    pantilthat *pth = get_pth();
     init_pth(pth);
 
     printf("\tSetting servos to 0 degrees...");
