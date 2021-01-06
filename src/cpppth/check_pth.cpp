@@ -252,7 +252,7 @@ int check_pth(pantilthat *pth)
 
 int check_pth2(pantilthat *pth)
 {
-    unsigned char i = 0, i1 = 0, i2 = 0;
+    unsigned char i1 = 0, i2 = 0;
     int ii = 0, ii1 = 0, ii2 = 0;
     int err = -1;
 
@@ -279,16 +279,6 @@ int check_pth2(pantilthat *pth)
         pth->set_servo(1, 0);
         pth->set_servo(2, 0);
         lsleep(ONESECOND);
-        printf(OK);
-        // Are we able to disable the servos ?
-        printf("\tTesting servo enabling/disabling...");
-        fflush(stdout);
-        if ((!pth->servo_enable(1, 0)) || (!pth->servo_enable(2, 0)) ||
-            (!pth->is_servo_enabled(1, &i1)) ||
-            (!pth->is_servo_enabled(2, &i2)) || (i1) || (i2)) {
-            printf(NOK);
-            goto error;
-        }
         printf(OK);
 
         // Getting to this point asserts no error occurred
