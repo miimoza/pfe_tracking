@@ -46,7 +46,7 @@ struct pos apply_angle(pantilthatns::pantilthat *pth, struct pos relative_pos)
     float angle_horizontal = pth->get_servo(2);
 
     move_servo(pth, 1, angle_vertical - (relative_pos.x * 3));
-    move_servo(pth, 2, angle_horizontal - (relative_pos.y * 3));
+    //move_servo(pth, 2, angle_horizontal - (relative_pos.y * 3));
 
     pos r = { pth->get_servo(1), pth->get_servo(2), -1 };
 
