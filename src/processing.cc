@@ -78,5 +78,9 @@ struct pos getRelativeTargetPos(cv::Mat img)
     p.y = obj_y / detected;
     drawPos(img, p);
     displayMat(img);
+
+    p.x = (p.x * 2) - 1;
+    p.y = (p.y * 2) - 1;
+
     return p;
 }
