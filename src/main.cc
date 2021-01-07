@@ -30,9 +30,9 @@ int main(void)
         getNextFrame(cap, frame);
         //cv::imshow("picam", frame);
         pos relative_pos = getRelativeTargetPos(frame);
-        printf("Relative Pos (x: %f, y:%f)", relative_pos.x, relative_pos.y);
+        printf("Relative Pos (x: %f, y:%f)\n", relative_pos.x, relative_pos.y);
         pos current_pth_angle = apply_angle(pth, relative_pos);
-        printf("Current PTH Angle (x: %f, y:%f)", current_pth_angle.x,
+        printf("Current PTH Angle (x: %f, y:%f)\n", current_pth_angle.x,
                current_pth_angle.y);
 
         if (cv::waitKey(5) >= 0)
