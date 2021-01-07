@@ -46,8 +46,8 @@ struct pos apply_angle(pantilthatns::pantilthat *pth, struct pos relative_pos)
     int angle_vertical = pth->get_servo(1);
     int angle_horizontal = pth->get_servo(2);
 
-    int center_distance_x = abs(relative_pos.x);
-    int center_distance_y = abs(relative_pos.y);
+    int center_distance_x = fabs(relative_pos.x);
+    int center_distance_y = fabs(relative_pos.y);
 
     int velocity_x = center_distance_x * 10;
     int velocity_y = center_distance_y * 10;
