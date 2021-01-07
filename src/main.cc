@@ -26,7 +26,7 @@ int main(void)
     cv::namedWindow("DEBUG");
 
     cv::VideoCapture cap = getVideoCapture();
-    cap.set(cv::CAP_PROP_FPS, 10);
+    cap.set(cv::CAP_PROP_FPS, 8);
     cv::Mat frame = getFrame();
 
     for (;;) {
