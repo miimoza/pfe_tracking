@@ -26,11 +26,12 @@ int main(void)
     cv::VideoCapture cap = getVideoCapture();
     cv::Mat frame = getFrame();
 
-    for (;;)
-    {
+    for (;;) {
         getNextFrame(cap, frame);
         //cv::imshow("picam", frame);
-        getRelativeTargetPos(frame);
+        pos relative_pos = getRelativeTargetPos(frame);
+        pos current_pth_angle = apply_angle(pth, relative_pos);
+
         if (cv::waitKey(5) >= 0)
             break;
     }

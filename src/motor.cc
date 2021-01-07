@@ -38,7 +38,7 @@ int move_servo(pantilthatns::pantilthat *pth, size_t servo_id, float angle)
     return pth->get_servo(servo_id);
 }
 
-struct pos apply_angle(struct pos p)
+struct pos apply_angle(pantilthatns::pantilthat *pth, struct pos p)
 {
     pos r = { -1, -1, -1 };
 
