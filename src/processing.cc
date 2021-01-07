@@ -44,7 +44,7 @@ struct pos getRelativeTargetPos(cv::Mat img)
     struct pos p = { -1, -1, -1 };
     p.x = 0.5;
     p.y = 0.5;
-    p.size = 8;
+    p.size = 0;
 
     cv::Mat imgHSV;
     cv::cvtColor(img, imgHSV, cv::COLOR_BGR2HSV);
@@ -66,7 +66,6 @@ struct pos getRelativeTargetPos(cv::Mat img)
     size_t detected = 0;
     // Dessin du cercle et du centre pour chaque plot détécté
     for (auto c : contours) {
-        std::cout << "[OCV] objet found" << std::endl;
         cv::Point2f center;
         float radius;
         float &ref_radius = radius;
@@ -76,8 +75,10 @@ struct pos getRelativeTargetPos(cv::Mat img)
         detected++;
     }
     if (detected != 0) {
+        std::cout << "[OCV] objet found" << std::endl;
         p.x = obj_x / detected;
         p.y = obj_y / detected;
+        p.size = 8;
     }
     drawPos(img, p);
     displayMat(img);
