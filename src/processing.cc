@@ -13,7 +13,9 @@
 
 static void displayMat(cv::Mat &img)
 {
-    cv::imshow("DEBUG", cv::flip(img, -1));
+    cv::Mat flipped;
+    cv::flip(flipped, img, -1);
+    cv::imshow("DEBUG", flipped);
 }
 
 static void drawPos(cv::Mat &img, struct pos p)
