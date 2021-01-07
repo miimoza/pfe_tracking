@@ -10,7 +10,7 @@ cv::VideoCapture getVideoCapture()
     cv::VideoCapture cap(0);
     if (!cap.isOpened()) {
         std::cout << "Cannot open picam" << std::endl;
-        return -1;
+        throw std::invalid_argument( "Cannot open" );
     }
 
     int deviceID = 0;
@@ -20,7 +20,7 @@ cv::VideoCapture getVideoCapture()
     if (!cap.isOpened())
     {
         std::cout << "Unable to open camera" << std::endl;
-        return -1;
+        throw std::invalid_argument( "Cannot open" );
     }
 
     return cap;
