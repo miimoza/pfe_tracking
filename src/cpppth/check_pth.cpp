@@ -261,7 +261,9 @@ int move_servo(pantilthat *pth, size_t servo_id, float angle)
 int main()
 {
     pantilthat *pth = get_pth();
-    move_servo(1, pth);
+    move_servo(pth, 1, 60);
+    lsleep(ONESECOND);
+    move_servo(pth, 2, -30);
 
     /*
     init_pth(pth);
