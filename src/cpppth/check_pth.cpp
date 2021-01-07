@@ -275,11 +275,6 @@ int check_pth2(pantilthat *pth)
                 goto error;
             }
         }
-        // Set PTH head back to its zero position
-        pth->set_servo(1, 0);
-        pth->set_servo(2, 0);
-        lsleep(ONESECOND);
-        printf(OK);
 
         // Getting to this point asserts no error occurred
         err = 0;
