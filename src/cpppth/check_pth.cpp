@@ -262,21 +262,21 @@ int check_pth2(pantilthat *pth)
     // The PTH must be able to move (-89, +89) along both axis
     printf("\tChecking ability to move...");
     fflush(stdout);
-    /*for (ii = -80; ii < 80; ii++) {
+    for (ii = -80; ii < 80; ii++) {
         pth->set_servo(1, ii);
         pth->set_servo(2, ii);
         lsleep(50);
         ii1 = pth->get_servo(1);
         ii2 = pth->get_servo(2);
-        if ((ii1 != ii) || (ii2 != ii)) {
-            printf(NOK);
-            goto error;
-        }
-    }*/
+        //if ((ii1 != ii) || (ii2 != ii)) {
+        //    printf(NOK);
+        //    goto error;
+        //}
+    }
 
-    printf("get servo %d\n ", pth->get_servo(1));
-    pth->set_servo(1, 70);
-    printf("get servo %d \n", pth->get_servo(1));
+    //printf("get servo %d\n ", pth->get_servo(1));
+    //pth->set_servo(1, 70);
+    //printf("get servo %d \n", pth->get_servo(1));
 
     printf("\n[SUCCESS]\n");
 
