@@ -9,6 +9,7 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "pos.hh"
 #include "utils.hh"
 
 #define OK "OK !\n"
@@ -33,8 +34,15 @@ pantilthatns::pantilthat *get_pth()
 int move_servo(pantilthatns::pantilthat *pth, size_t servo_id, float angle)
 {
     pth->set_servo(servo_id, angle);
-    printf("[PTH] move servomotor %ld to angle %f\n", servo_id, angle);
+    printf("[PTH] move servomotor %zu to angle %f\n", servo_id, angle);
     return pth->get_servo(servo_id);
+}
+
+struct pos apply_angle(struct pos p)
+{
+    pos r = { -1, -1, -1 };
+
+    return r;
 }
 
 int check_pth(pantilthatns::pantilthat *pth)
