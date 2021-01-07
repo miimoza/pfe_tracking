@@ -260,10 +260,10 @@ int check_pth2(pantilthat *pth)
     printf("\tChecking ability to move...");
     fflush(stdout);
     for (ii = -80; ii < 80; ii++) {
-        pth->set_servo(1, ii);
+        //pth->set_servo(1, ii);
         pth->set_servo(2, ii);
         lsleep(50);
-        ii1 = pth->get_servo(1);
+        //ii1 = pth->get_servo(1);
         ii2 = pth->get_servo(2);
     }
 
