@@ -44,7 +44,7 @@ struct pos getRelativeTargetPos(cv::Mat img)
     struct pos p = { -1, -1, -1 };
     p.x = 0.5;
     p.y = 0.5;
-    p.size = 50;
+    p.size = 8;
 
     cv::Mat imgHSV;
     cv::cvtColor(img, imgHSV, cv::COLOR_BGR2HSV);
