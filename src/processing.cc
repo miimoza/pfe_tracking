@@ -14,7 +14,7 @@
 static void displayMat(cv::Mat &img)
 {
     cv::Mat flipped;
-    cv::flip(flipped, img, -1);
+    cv::flip(img, flipped, -1);
     cv::imshow("DEBUG", flipped);
 }
 
