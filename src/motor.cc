@@ -14,19 +14,16 @@
 #define OK "OK !\n"
 #define NOK "NOK !\n"
 
-using namespace std;
-using namespace pantilthatns;
-
 pantilthatns::pantilthat *get_pth()
 {
     pantilthatns::pantilthat *pth;
 
     try {
         pth = new pantilthatns::pantilthat();
-    } catch (exception &e) {
-        cerr << "[FATAL] could not create Pan-Tilt HAT instance class : "
-             << e.what() << "Aborting.\n"
-             << endl;
+    } catch (std::exception &e) {
+        std::cerr << "[FATAL] could not create Pan-Tilt HAT instance class : "
+                  << e.what() << "Aborting.\n"
+                  << std::endl;
         exit(-1);
     }
 
@@ -47,15 +44,15 @@ int check_pth(pantilthatns::pantilthat *pth)
     int err = -1;
 
     try {
-        // May rise an exception if the system is unable to create an instance
+        // May rise an std::exception if the system is unable to create an instance
 
         printf("\n[INFO] checking the Pan-Tilt HAT module...\n\n");
 
         // Initial configuration
         if (!pth->setup()) {
-            cerr
+            std::cerr
                 << "[FATAL] Could not initialize Pan-Tilt HAT module. Aborting.\n"
-                << endl;
+                << std::endl;
             goto error;
         }
         // Reset the PTH device
@@ -133,10 +130,10 @@ int check_pth(pantilthatns::pantilthat *pth)
         if (pth)
             delete pth;
 
-    } catch (exception &e) {
-        cerr << "[FATAL] could not create Pan-Tilt HAT instance class : "
-             << e.what() << "Aborting.\n"
-             << endl;
+    } catch (std::exception &e) {
+        std::cerr << "[FATAL] could not create Pan-Tilt HAT instance class : "
+                  << e.what() << "Aborting.\n"
+                  << std::endl;
         exit(-1);
     }
 

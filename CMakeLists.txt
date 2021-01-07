@@ -20,6 +20,8 @@ add_executable(${TARGET_NAME}
     src/camera.cc
     src/processing.cc
     src/motor.cc
+    src/libpth/pantilthat.cpp
+    src/libpth/smbus.c
     src/compute.cc
     src/utils.cc
 )
