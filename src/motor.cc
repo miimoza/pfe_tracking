@@ -33,10 +33,10 @@ pantilthatns::pantilthat *get_pth()
 
 //void clean_pth()
 
-int move_servo(pantilthatns::pantilthat *pth, size_t servo_id, float angle)
+int move_servo(pantilthatns::pantilthat *pth, size_t servo_id, int angle)
 {
     pth->set_servo(servo_id, angle);
-    printf("[PTH] move servomotor %zu to angle %f\n", servo_id, angle);
+    printf("[PTH] move servomotor %zu to angle %d\n", servo_id, angle);
     return pth->get_servo(servo_id);
 }
 
@@ -46,12 +46,12 @@ struct pos apply_angle(pantilthatns::pantilthat *pth, struct pos relative_pos)
     int angle_horizontal = pth->get_servo(2);
 
     int new_angle_vertical =
-        ((angle_vertical + (relative_pos.y * 3) + 90) % 180) - 90;
+        ((angle_vertical + (int)(relative_pos.y * 3) + 90) % 180) - 90;
     int new_angle_horizontal =
-        ((angle_horizontal + (relative_pos.x * 3) + 90) % 180) - 90;
+        ((angle_horizontal + (int)(relative_pos.x * 3) + 90) % 180) - 90;
 
-    printf("New angle vertical:%f\n", new_angle_vertical);
-    printf("New angle horizontal:%f\n", new_angle_horizontal);
+    printf("New angle vertical:%d\n", new_angle_vertical);
+    printf("New angle horizontal:%d\n", new_angle_horizontal);
 
     move_servo(pth, 1, new_angle_vertical);
     //move_servo(pth, 2, angle_horizontal - (relative_pos.y * 3));
