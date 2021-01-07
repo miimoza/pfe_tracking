@@ -50,7 +50,7 @@ struct pos apply_angle(pantilthatns::pantilthat *pth, struct pos relative_pos)
     float center_distance_y = fabs(relative_pos.y);
 
     int velocity_x = center_distance_x * 6;
-    int velocity_y = center_distance_y * 6;
+    int velocity_y = center_distance_y * 3;
 
     printf("velo x: %d, y:%d\n", velocity_x, velocity_y);
 
