@@ -257,13 +257,12 @@ int check_pth2(pantilthat *pth)
     int err = -1;
 
     // May rise an exception if the system is unable to create an instance
-
     printf("\n[INFO] checking the Pan-Tilt HAT module...\n\n");
 
     // The PTH must be able to move (-89, +89) along both axis
     printf("\tChecking ability to move...");
     fflush(stdout);
-    for (ii = -80; ii < 80; ii++) {
+    /*for (ii = -80; ii < 80; ii++) {
         pth->set_servo(1, ii);
         pth->set_servo(2, ii);
         lsleep(50);
@@ -273,7 +272,10 @@ int check_pth2(pantilthat *pth)
             printf(NOK);
             goto error;
         }
-    }
+    }*/
+
+    pth->set_servo(1, 30);
+    print(pth->get_servo(1));
 
     printf("\n[SUCCESS]\n");
 
