@@ -265,10 +265,10 @@ int check_pth2(pantilthat *pth)
         printf("\tChecking ability to move...");
         fflush(stdout);
         for (ii = -80; ii < 80; ii++) {
-            //pth->set_servo(1, ii);
+            pth->set_servo(1, ii);
             pth->set_servo(2, ii);
             lsleep(50);
-            //ii1 = pth->get_servo(1);
+            ii1 = pth->get_servo(1);
             ii2 = pth->get_servo(2);
             if ((ii1 != ii) || (ii2 != ii)) {
                 printf(NOK);
@@ -276,9 +276,7 @@ int check_pth2(pantilthat *pth)
             }
         }
 
-        // Getting to this point asserts no error occurred
-        err = 0;
-        printf("\n[SUCCESS] Pan-Tilt HAT module is fully operational.\n\n");
+        printf("\n[SUCCESS]\n");
 
     error:
         // Get rid of PTH object and frees memory.
