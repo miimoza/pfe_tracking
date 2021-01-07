@@ -71,7 +71,7 @@ struct pos getRelativeTargetPos(cv::Mat img)
     size_t detected = 0;
     // Dessin du cercle et du centre pour chaque plot détécté
     for (auto c : contours) {
-        std::cout << "OBJECT FOUND" << std::endl;
+        std::cout << "[OCV] objet found" << std::endl;
         cv::Point2f center;
         float radius;
         float &ref_radius = radius;
