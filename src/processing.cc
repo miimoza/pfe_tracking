@@ -15,12 +15,6 @@ static void displayMat(cv::Mat &img)
 {
     cv::namedWindow("DEBUG");
     cv::imshow("DEBUG", img);
-    cv::waitKey(0);
-    cv::waitKey(0);
-    cv::waitKey(0);
-    cv::waitKey(0);
-    cv::waitKey(0);
-    cv::destroyWindow("DEBUG");
 }
 
 static void drawPos(cv::Mat &img, struct pos p)
