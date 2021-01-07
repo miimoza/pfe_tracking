@@ -1,4 +1,3 @@
-
 #include <errno.h>
 #include <exception>
 #include <iostream>
@@ -19,7 +18,6 @@
 using namespace std;
 using namespace pantilthatns;
 
-// Suspend this thread for ms milliseconds.
 int lsleep(long ms)
 {
     int result = 0;
@@ -37,7 +35,6 @@ int lsleep(long ms)
     return result;
 }
 
-// Get Pan Tilt Hat Object
 pantilthat *get_pth()
 {
     pantilthat *pth;

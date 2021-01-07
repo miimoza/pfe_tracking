@@ -21,6 +21,7 @@ add_executable(${TARGET_NAME}
     src/processing.cc
     src/motor.cc
     src/compute.cc
+    src/utils.cc
 )
 
 # libs

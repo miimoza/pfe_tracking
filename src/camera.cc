@@ -1,7 +1,7 @@
 #include <iostream>
+
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
-
 
 using namespace std;
 using namespace cv;
@@ -9,8 +9,7 @@ using namespace cv;
 cv::VideoCapture getVideoCapture()
 {
     cv::VideoCapture cap(0);
-    if (!cap.isOpened())
-    {
+    if (!cap.isOpened()) {
         std::cout << "Cannot open picam" << std::endl;
         //return;
     }
@@ -26,14 +25,14 @@ cv::Mat getImg(cv::VideoCapture cap)
     return img;
 }
 
-int main ()
+/*int main()
 {
     /*cv::VideoCapture cap = getVideoCapture();
       for (;;)
       {
       cv::imshow("debug", getImg(cap));
       }
-      return 0;*/
+      return 0;
 
     Mat frame;
     //--- INITIALIZE VIDEOCAPTURE
@@ -41,8 +40,8 @@ int main ()
     // open the default camera using default API
     // cap.open(0);
     // OR advance usage: select any API backend
-    int deviceID = 0;             // 0 = open default camera
-    int apiID = cv::CAP_ANY;      // 0 = autodetect default API
+    int deviceID = 0; // 0 = open default camera
+    int apiID = cv::CAP_ANY; // 0 = autodetect default API
     // open selected camera using selected API
     cap.open(deviceID, apiID);
     // check if we succeeded
@@ -51,10 +50,8 @@ int main ()
         return -1;
     }
     //--- GRAB AND WRITE LOOP
-    cout << "Start grabbing" << endl
-        << "Press any key to terminate" << endl;
-    for (;;)
-    {
+    cout << "Start grabbing" << endl << "Press any key to terminate" << endl;
+    for (;;) {
         // wait for a new frame from camera and store it into 'frame'
         cap.read(frame);
         // check if we succeeded
@@ -70,3 +67,4 @@ int main ()
     // the camera will be deinitialized automatically in VideoCapture destructor
     return 0;
 }
+*/
