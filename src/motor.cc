@@ -48,7 +48,7 @@ struct pos apply_angle(pantilthatns::pantilthat *pth, struct pos relative_pos)
     int new_angle_vertical =
         ((angle_vertical - (int)(relative_pos.y * 3) + 90) % 180) - 90;
     int new_angle_horizontal =
-        ((angle_horizontal - (int)(relative_pos.x * 3) + 90) % 180) - 90;
+        ((angle_horizontal + (int)(relative_pos.x * 3) + 90) % 180) - 90;
 
     printf("New angle vertical:%d\n", new_angle_vertical);
     printf("New angle horizontal:%d\n", new_angle_horizontal);
