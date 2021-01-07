@@ -250,7 +250,7 @@ int check_pth(pantilthat *pth)
     return err;
 }
 
-int check_pth2(pantilthat *pth)
+int move_servo(size_t servo_id, pantilthat *pth)
 {
     unsigned char i1 = 0, i2 = 0;
     int ii = 0, ii1 = 0, ii2 = 0;
@@ -259,13 +259,14 @@ int check_pth2(pantilthat *pth)
     printf("\n[INFO] checking the Pan-Tilt HAT module...\n\n");
     printf("\tChecking ability to move...");
     fflush(stdout);
-    for (ii = -80; ii < 80; ii++) {
-        //pth->set_servo(1, ii);
+    /*for (ii = 0; ii < 80; ii++) {
+        pth->set_servo(1, ii);
         pth->set_servo(2, ii);
         lsleep(50);
         //ii1 = pth->get_servo(1);
         ii2 = pth->get_servo(2);
-    }
+    }*/
+    pth->set_servo(1, -80);
 
     printf("\n[SUCCESS]\n");
 
@@ -275,7 +276,7 @@ int check_pth2(pantilthat *pth)
 int main()
 {
     pantilthat *pth = get_pth();
-    check_pth2(pth);
+    move_servo(1, pth);
 
     /*
     init_pth(pth);
