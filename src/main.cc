@@ -23,12 +23,13 @@ int main(void)
     lsleep(1000);
     move_servo(pth, 2, 30);
 
+    cv::namedWindow("DEBUG");
+
     cv::VideoCapture cap = getVideoCapture();
     cv::Mat frame = getFrame();
 
     for (;;) {
         getNextFrame(cap, frame);
-        //cv::imshow("picam", frame);
         pos relative_pos = getRelativeTargetPos(frame);
         printf("Relative Pos (x: %f, y:%f)\n", relative_pos.x, relative_pos.y);
         pos current_pth_angle = apply_angle(pth, relative_pos);

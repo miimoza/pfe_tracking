@@ -13,8 +13,7 @@
 
 static void displayMat(cv::Mat &img)
 {
-    cv::namedWindow("DEBUG");
-    cv::imshow("DEBUG", img);
+    cv::imshow("DEBUG", cv::flip(img, -1));
 }
 
 static void drawPos(cv::Mat &img, struct pos p)
@@ -74,8 +73,10 @@ struct pos getRelativeTargetPos(cv::Mat img)
         obj_y += center.y / img.size().height;
         detected++;
     }
-    p.x = obj_x / detected;
-    p.y = obj_y / detected;
+    if (detected != 0) {
+        p.x = obj_x / detected;
+        p.y = obj_y / detected;
+    }
     drawPos(img, p);
     displayMat(img);
 
