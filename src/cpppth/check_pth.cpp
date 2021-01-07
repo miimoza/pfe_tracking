@@ -266,7 +266,7 @@ int move_servo(size_t servo_id, pantilthat *pth)
         //ii1 = pth->get_servo(1);
         ii2 = pth->get_servo(2);
     }*/
-    pth->set_servo(1, -80);
+    pth->set_servo(1, 60);
 
     printf("\n[SUCCESS]\n");
 
