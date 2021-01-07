@@ -45,7 +45,15 @@ struct pos apply_angle(pantilthatns::pantilthat *pth, struct pos relative_pos)
     float angle_vertical = pth->get_servo(1);
     float angle_horizontal = pth->get_servo(2);
 
-    move_servo(pth, 1, angle_vertical + (relative_pos.x * 3));
+    float new_angle_vertical =
+        ((angle_vertical + (relative_pos.y * 3) + 90) % 180) - 90;
+    float new_angle_horizontal =
+        ((angle_horizontal + (relative_pos.x * 3) + 90) % 180) - 90;
+
+    printf("New angle vertical:%f\n", new_angle_vertical);
+    printf("New angle horizontal:%f\n", new_angle_horizontal);
+
+    move_servo(pth, 1, new_angle_vertical);
     //move_servo(pth, 2, angle_horizontal - (relative_pos.y * 3));
 
     pos r = { pth->get_servo(1), pth->get_servo(2), -1 };
