@@ -274,7 +274,7 @@ int check_pth2(pantilthat *pth)
         }
     }*/
 
-    pth->set_servo(1, 30);
+    pth->set_servo(1, 70);
     printf("get servo %d ", pth->get_servo(1));
 
     printf("\n[SUCCESS]\n");
