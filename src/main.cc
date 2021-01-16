@@ -8,7 +8,7 @@
 
 int main(void)
 {
-    std::cout << "Hello mec" << std::endl;
+    std::cout << "PFE TRACKING - OZAMEN" << std::endl;
 
     /*
     cv::Mat image = cv::imread("./images/test3.png");
@@ -23,7 +23,7 @@ int main(void)
     lsleep(1000);
     move_servo(pth, 2, 30);
 
-    cv::namedWindow("DEBUG");
+    cv::namedWindow("picam");
 
     cv::VideoCapture cap = getVideoCapture();
     cap.set(cv::CAP_PROP_FPS, 8);
@@ -32,10 +32,9 @@ int main(void)
     for (;;) {
         getNextFrame(cap, frame);
         pos relative_pos = getRelativeTargetPos(frame);
-        printf("Relative Pos (x: %f, y:%f)\n", relative_pos.x, relative_pos.y);
+        //printf("Relative Pos (x: %f, y:%f)\n", relative_pos.x, relative_pos.y);
         pos current_pth_angle = apply_angle(pth, relative_pos);
-        printf("Current PTH Angle (x: %f, y:%f)\n", current_pth_angle.x,
-               current_pth_angle.y);
+        //printf("Current PTH Angle (x: %f, y:%f)\n", current_pth_angle.x, current_pth_angle.y);
 
         if (cv::waitKey(5) >= 0)
             break;

@@ -2,20 +2,20 @@
 
 #include <iostream>
 
-#define LOW_H 140
-#define HIGH_H 160
+#define LOW_H 23
+#define HIGH_H 40
 
-#define LOW_S 127
-#define HIGH_S 255
+#define LOW_S 41
+#define HIGH_S 150
 
-#define LOW_V 192
+#define LOW_V 133
 #define HIGH_V 255
 
 static void displayMat(cv::Mat &img)
 {
     cv::Mat flipped;
     cv::flip(img, flipped, -1);
-    cv::imshow("DEBUG", flipped);
+    cv::imshow("PFE TRACKING", flipped);
 }
 
 static void drawPos(cv::Mat &img, struct pos p)
@@ -47,6 +47,7 @@ struct pos getRelativeTargetPos(cv::Mat img)
     p.size = 0;
 
     cv::Mat imgHSV;
+    cv::resize(img, img, cv::Size(img.cols * 0.75, img.rows * 0.75), 0, 0, CV_INTER_LINEAR);
     cv::cvtColor(img, imgHSV, cv::COLOR_BGR2HSV);
 
     cv::Mat thresholded;
@@ -54,7 +55,7 @@ struct pos getRelativeTargetPos(cv::Mat img)
                 cv::Scalar(HIGH_H, HIGH_S, HIGH_V), thresholded);
 
     // Suppression des parasites
-    remove_small_objects(thresholded);
+    //remove_small_objects(thresholded);
 
     // cv::findContours permet d'obtenir une liste des plots distinct
     std::vector<std::vector<cv::Point>> contours;
@@ -75,7 +76,7 @@ struct pos getRelativeTargetPos(cv::Mat img)
         detected++;
     }
     if (detected != 0) {
-        std::cout << "[OCV] objet found" << std::endl;
+      //  std::cout << "[OCV] objet found" << std::endl;
         p.x = obj_x / detected;
         p.y = obj_y / detected;
         p.size = 8;

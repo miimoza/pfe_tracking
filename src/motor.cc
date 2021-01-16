@@ -37,7 +37,7 @@ pantilthatns::pantilthat *get_pth()
 int move_servo(pantilthatns::pantilthat *pth, size_t servo_id, int angle)
 {
     pth->set_servo(servo_id, angle);
-    printf("[PTH] move servomotor %zu to angle %d\n", servo_id, angle);
+    //printf("[PTH] move servomotor %zu to angle %d\n", servo_id, angle);
     return pth->get_servo(servo_id);
 }
 
@@ -49,22 +49,25 @@ struct pos apply_angle(pantilthatns::pantilthat *pth, struct pos relative_pos)
     float center_distance_x = fabs(relative_pos.x);
     float center_distance_y = fabs(relative_pos.y);
 
-    int velocity_x = center_distance_x * 6;
-    int velocity_y = center_distance_y * 4;
+    int velocity_x = center_distance_x * 12;
+    int velocity_y = center_distance_y * 8;
 
-    printf("velo x: %d, y:%d\n", velocity_x, velocity_y);
+    //printf("velo x: %d, y:%d\n", velocity_x, velocity_y);
 
+    int posx = relative_pos.x * velocity_x;
     int new_angle_horizontal =
-        ((angle_horizontal + (int)(relative_pos.x * velocity_x) + 90) % 180) -
-        90;
+        ((angle_horizontal + (int)(posx) + 90) ) - 90;
+
     int new_angle_vertical =
-        ((angle_vertical - (int)(relative_pos.y * velocity_y) + 90) % 180) - 90;
+        ((angle_vertical - (int)(relative_pos.y * velocity_y) + 90)) - 90;
 
-    printf("New angle vertical:%d\n", new_angle_vertical);
-    printf("New angle horizontal:%d\n", new_angle_horizontal);
+    //printf("New angle vertical:%d\n", new_angle_vertical);
+    //printf("New angle horizontal:%d\n", new_angle_horizontal);
 
-    move_servo(pth, 1, new_angle_vertical);
-    move_servo(pth, 2, new_angle_horizontal);
+    if (new_angle_vertical > -90 && new_angle_vertical < 90)
+        move_servo(pth, 1, new_angle_vertical);
+    if (new_angle_horizontal > -90 && new_angle_horizontal < 90)
+        move_servo(pth, 2, new_angle_horizontal);
 
     pos r = { pth->get_servo(1) / (float)90, pth->get_servo(2) / (float)90,
               -1 };
@@ -81,7 +84,7 @@ int check_pth(pantilthatns::pantilthat *pth)
     try {
         // May rise an std::exception if the system is unable to create an instance
 
-        printf("\n[INFO] checking the Pan-Tilt HAT module...\n\n");
+        //printf("\n[INFO] checking the Pan-Tilt HAT module...\n\n");
 
         // Initial configuration
         if (!pth->setup()) {
