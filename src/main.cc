@@ -26,7 +26,7 @@ int main(void)
     cv::namedWindow("picam");
 
     cv::VideoCapture cap = getVideoCapture();
-    cap.set(cv::CAP_PROP_FPS, 8);
+    cap.set(cv::CAP_PROP_FPS, 15);
     cv::Mat frame = getFrame();
 
     for (;;) {

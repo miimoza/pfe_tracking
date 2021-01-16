@@ -2,6 +2,19 @@
 
 #include <iostream>
 
+//RED
+/*
+#define LOW_H 140
+#define HIGH_H 160
+
+#define LOW_S 127
+#define HIGH_S 255
+
+#define LOW_V 192
+#define HIGH_V 255
+*/
+//YELLOW
+
 #define LOW_H 23
 #define HIGH_H 40
 
