@@ -3,7 +3,7 @@
 #include <iostream>
 
 //RED
-/*
+
 #define LOW_H 140
 #define HIGH_H 160
 
@@ -12,9 +12,9 @@
 
 #define LOW_V 192
 #define HIGH_V 255
-*/
-//YELLOW
 
+//YELLOW
+/*
 #define LOW_H 23
 #define HIGH_H 40
 
@@ -23,12 +23,13 @@
 
 #define LOW_V 133
 #define HIGH_V 255
+*/
 
 static void displayMat(cv::Mat &img)
 {
     cv::Mat flipped;
     cv::flip(img, flipped, -1);
-    cv::imshow("PFE TRACKING", flipped);
+    //cv::imshow("PFE TRACKING", flipped);
 }
 
 static void drawPos(cv::Mat &img, struct pos p)
