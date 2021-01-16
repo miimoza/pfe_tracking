@@ -23,7 +23,7 @@ int main(void)
     lsleep(1000);
     move_servo(pth, 2, 30);
 
-    cv::namedWindow("picam");
+    cv::namedWindow("PFE TRACKING", CV_WINDOW_NORMAL);
 
     cv::VideoCapture cap = getVideoCapture();
     cap.set(cv::CAP_PROP_FPS, 15);
@@ -35,8 +35,8 @@ int main(void)
         //printf("Relative Pos (x: %f, y:%f)\n", relative_pos.x, relative_pos.y);
         pos current_pth_angle = apply_angle(pth, relative_pos);
         //printf("Current PTH Angle (x: %f, y:%f)\n", current_pth_angle.x, current_pth_angle.y);
-
-        if (cv::waitKey(5) >= 0)
+        int key = cv::waitKey(30) & 255;
+        if (key == 27)
             break;
     }
 
