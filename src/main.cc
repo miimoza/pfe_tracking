@@ -29,8 +29,8 @@ int main(void)
     cv::VideoCapture cap = getVideoCapture();
     cap.set(cv::CAP_PROP_FPS, 15);
     cv::Mat frame = getFrame();
-
-    /*cv::Mat src;
+    /*
+    cv::Mat src;
     cap >> src;
     bool isColor = (src.type() == CV_8UC3);
     cv::VideoWriter writer;
@@ -38,11 +38,9 @@ int main(void)
     std::string filename = "video.avi";
     cv::Size sizeFrame(640, 480);
     writer.open(filename, codec, 15, sizeFrame, isColor);*/
-
     for (;;) {
         getNextFrame(cap, frame);
         //writer.write(frame);
-
         pos relative_pos = getRelativeTargetPos(frame);
         //printf("Relative Pos (x: %f, y:%f)\n", relative_pos.x, relative_pos.y);
         pos current_pth_angle = apply_angle(pth, relative_pos);
@@ -50,7 +48,6 @@ int main(void)
         int key = cv::waitKey(30) & 255;
         if (key == 27)
             break;
-
     }
     cap.release();
     //writer.release();

@@ -30,6 +30,7 @@ static void displayMat(cv::Mat &img)
     cv::Mat flipped;
     cv::flip(img, flipped, -1);
     cv::imshow("PFE TRACKING", flipped);
+    //writer.write(flipped);
 }
 
 static void drawPos(cv::Mat &img, struct pos p)
